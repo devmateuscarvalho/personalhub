@@ -1,0 +1,241 @@
+/* Dark theme (default) */
+:root,
+[data-theme="dark"] {
+  --bg: #0f0f12;
+  --card-bg: rgba(255, 255, 255, 0.06);
+  --card-border: rgba(255, 255, 255, 0.08);
+  --text: #f0f0f2;
+  --text-muted: #9ca3af;
+  --accent: #22c55e;
+  --accent-hover: #16a34a;
+  --link-bg: rgba(255, 255, 255, 0.08);
+  --link-bg-hover: rgba(255, 255, 255, 0.12);
+  --toggle-bg: rgba(255, 255, 255, 0.08);
+  --toggle-active: rgba(34, 197, 94, 0.25);
+  --shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  --avatar-border: rgba(255, 255, 255, 0.12);
+}
+
+[data-theme="light"] {
+  --bg: #f4f4f5;
+  --card-bg: rgba(255, 255, 255, 0.9);
+  --card-border: rgba(0, 0, 0, 0.06);
+  --text: #18181b;
+  --text-muted: #52525b;
+  --accent: #16a34a;
+  --accent-hover: #15803d;
+  --link-bg: rgba(0, 0, 0, 0.04);
+  --link-bg-hover: rgba(0, 0, 0, 0.08);
+  --toggle-bg: rgba(0, 0, 0, 0.06);
+  --toggle-active: rgba(34, 197, 94, 0.2);
+  --shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+  --avatar-border: rgba(0, 0, 0, 0.1);
+}
+
+:root {
+  --radius: 16px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  min-height: 100%;
+  transition: background-color 0.25s ease, color 0.2s ease;
+}
+
+body {
+  font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+#app {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.page {
+  width: 100%;
+  max-width: 420px;
+}
+
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius);
+  padding: 32px 24px 28px;
+  text-align: center;
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(12px);
+  position: relative;
+}
+
+.toggles {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.lang-toggle {
+  display: flex;
+  background: var(--toggle-bg);
+  border-radius: 10px;
+  padding: 4px;
+  border: 1px solid var(--card-border);
+}
+
+.lang-btn {
+  font-family: inherit;
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.lang-btn:hover {
+  color: var(--text);
+}
+
+.lang-btn.active {
+  background: var(--toggle-active);
+  color: var(--accent);
+}
+
+.theme-toggle {
+  position: relative;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  border: 1px solid var(--card-border);
+  background: var(--toggle-bg);
+  color: var(--text);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  transition: background 0.2s, transform 0.15s;
+}
+
+.theme-toggle:hover {
+  background: var(--link-bg-hover);
+  transform: scale(1.05);
+}
+
+.theme-icon {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.2s;
+}
+
+[data-theme="dark"] .theme-icon.sun {
+  opacity: 1;
+}
+[data-theme="dark"] .theme-icon.moon {
+  opacity: 0;
+  pointer-events: none;
+}
+
+[data-theme="light"] .theme-icon.sun {
+  opacity: 0;
+  pointer-events: none;
+}
+[data-theme="light"] .theme-icon.moon {
+  opacity: 1;
+}
+
+.avatar {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 0 auto 20px;
+  display: block;
+  border: 3px solid var(--avatar-border);
+}
+
+.name {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 4px;
+}
+
+.title {
+  color: var(--accent);
+  font-size: 0.95rem;
+  font-weight: 500;
+  margin-bottom: 12px;
+}
+
+.bio {
+  color: var(--text-muted);
+  font-size: 0.875rem;
+  max-width: 340px;
+  margin: 0 auto 24px;
+  line-height: 1.55;
+}
+
+.links {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.link {
+  display: block;
+  padding: 14px 20px;
+  background: var(--link-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: background 0.2s, border-color 0.2s, transform 0.15s;
+}
+
+.link:hover {
+  background: var(--link-bg-hover);
+  border-color: var(--card-border);
+  transform: translateY(-1px);
+}
+
+.link:active {
+  transform: translateY(0);
+}
+
+.link-label {
+  display: block;
+}
+
+@media (max-width: 480px) {
+  .card {
+    padding: 28px 20px 24px;
+  }
+  .name {
+    font-size: 1.35rem;
+  }
+  .bio {
+    font-size: 0.8125rem;
+  }
+}
