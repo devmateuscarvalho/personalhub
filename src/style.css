@@ -14,6 +14,8 @@
   --toggle-active: rgba(34, 197, 94, 0.25);
   --shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
   --avatar-border: rgba(255, 255, 255, 0.12);
+  --tooltip-bg: #1c1c21;
+  --tooltip-border: rgba(255, 255, 255, 0.12);
 }
 
 [data-theme="light"] {
@@ -30,6 +32,8 @@
   --toggle-active: rgba(34, 197, 94, 0.2);
   --shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
   --avatar-border: rgba(0, 0, 0, 0.1);
+  --tooltip-bg: #ffffff;
+  --tooltip-border: rgba(0, 0, 0, 0.1);
 }
 
 :root {
@@ -197,8 +201,10 @@ body {
 
 .links {
   display: flex;
-  flex-direction: column;
-  gap: 10px;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
 }
 
 .link {
@@ -222,6 +228,78 @@ body {
 
 .link:active {
   transform: translateY(0);
+}
+
+.link-icon {
+  position: relative;
+  padding: 12px;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Tooltip customizado no hover */
+.link-tooltip {
+  position: absolute;
+  bottom: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%) translateY(4px);
+  padding: 8px 14px;
+  background: var(--tooltip-bg);
+  border: 1px solid var(--tooltip-border);
+  border-radius: 10px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--accent);
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  box-shadow: var(--shadow);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  z-index: 10;
+}
+
+.link-tooltip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -6px;
+  border: 6px solid transparent;
+  border-top-color: var(--tooltip-border);
+}
+
+.link-tooltip::before {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  margin-top: 1px;
+  border: 5px solid transparent;
+  border-top-color: var(--tooltip-bg);
+  z-index: 1;
+}
+
+.link-icon:hover .link-tooltip,
+.link-icon:focus-visible .link-tooltip {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+.link-icon-svg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+}
+
+.link-icon-svg svg {
+  width: 100%;
+  height: 100%;
 }
 
 .link-label {
