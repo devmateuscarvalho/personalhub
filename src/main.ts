@@ -17,8 +17,7 @@ const linkAriaLabels: Record<string, string> = {
   github: 'GitHub',
   instagram: 'Instagram',
   youtube: 'YouTube',
-  whatsapp: 'WhatsApp',
-  email: 'Email',
+  whatsapp: 'WhatsApp'
 }
 
 const links = [
@@ -26,18 +25,17 @@ const links = [
   { id: 'github', href: 'https://github.com/devmateuscarvalho', icon: 'github' },
   { id: 'instagram', href: 'https://www.instagram.com/mateus.ccarvalho', icon: 'instagram' },
   { id: 'youtube', href: 'https://www.youtube.com/@devmateuscarvalho', icon: 'youtube' },
-  { id: 'whatsapp', href: 'https://wa.me/5548998009100', icon: 'whatsapp' },
-  { id: 'email', href: 'mailto:dev.mateuscarvalho@gmail.com', icon: 'email' },
+  { id: 'whatsapp', href: 'https://wa.me/5548998009100', icon: 'whatsapp' }
 ]
 
 const texts = {
   pt: {
     title: 'Engenheiro de Software',
-    bio: 'Engenheiro de software com mais de 4 anos de experiência, focado em sistemas seguros e robustos. Atuo com Java/Spring, React.js, Android (Kotlin), AWS, CI/CD e arquitetura limpa. Sempre em busca de superar expectativas e entregar soluções de alta qualidade.',
+    bio: 'Engenheiro de software experiente, focado em sistemas seguros e robustos. Atuo com Java/Spring, React.js, Android (Kotlin), AWS, CI/CD e arquitetura limpa. Sempre em busca de superar expectativas e entregar soluções de alta qualidade.',
   },
   en: {
     title: 'Software Engineer',
-    bio: 'Software Engineer with 4+ years of experience, focused on building secure and robust systems. I work with Java/Spring, React.js, Android (Kotlin), AWS, CI/CD and Clean Architecture. Constantly seeking to exceed expectations and deliver high-quality solutions.',
+    bio: 'Software Engineer experienced, focused on building secure and robust systems. I work with Java/Spring, React.js, Android (Kotlin), AWS, CI/CD and Clean Architecture. Constantly seeking to exceed expectations and deliver high-quality solutions.',
   },
 }
 
