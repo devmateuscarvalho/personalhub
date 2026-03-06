@@ -24,7 +24,6 @@ const links = [
   { id: 'linkedin', href: 'https://www.linkedin.com/in/vieiracmateus/', icon: 'linkedin' },
   { id: 'github', href: 'https://github.com/devmateuscarvalho', icon: 'github' },
   { id: 'instagram', href: 'https://www.instagram.com/mateus.ccarvalho', icon: 'instagram' },
-  { id: 'youtube', href: 'https://www.youtube.com/@devmateuscarvalho', icon: 'youtube' },
   { id: 'whatsapp', href: 'https://wa.me/5548998009100', icon: 'whatsapp' }
 ]
 
