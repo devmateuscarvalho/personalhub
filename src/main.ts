@@ -71,7 +71,14 @@ function render(lang: Lang) {
             <span class="theme-icon moon" aria-hidden="true">🌙</span>
           </button>
         </div>
-        <img src="/avatar.jpg" alt="Mateus Carvalho" class="avatar" />
+        <button type="button" class="avatar-trigger" aria-label="Ampliar foto de perfil">
+          <img src="/avatar.jpg" alt="Mateus Carvalho" class="avatar" />
+        </button>
+        <div class="avatar-modal" role="dialog" aria-modal="true" aria-label="Profile photo" tabindex="-1">
+          <div class="avatar-modal-content">
+            <img src="/avatar.jpg" alt="Mateus Carvalho em destaque" />
+          </div>
+        </div>
         <h1 class="name">Mateus Carvalho Vieira</h1>
         <p class="title">${t.title}</p>
         <p class="bio">${t.bio}</p>
@@ -106,6 +113,49 @@ function render(lang: Lang) {
       const next: Theme = current === 'dark' ? 'light' : 'dark'
       localStorage.setItem(STORAGE_THEME, next)
       applyTheme(next)
+    })
+  }
+
+  const avatarTrigger = app.querySelector<HTMLButtonElement>('.avatar-trigger')
+  const avatarModal = app.querySelector<HTMLDivElement>('.avatar-modal')
+
+  if (avatarTrigger && avatarModal) {
+    const closeModal = () => {
+      avatarModal.classList.remove('is-open')
+      document.body.style.overflow = ''
+      document.documentElement.classList.remove('avatar-modal-open')
+    }
+
+    const openModal = () => {
+      avatarModal.classList.add('is-open')
+      document.body.style.overflow = 'hidden'
+      document.documentElement.classList.add('avatar-modal-open')
+      avatarModal.focus()
+    }
+
+    avatarTrigger.addEventListener('click', () => {
+      openModal()
+    })
+
+    avatarTrigger.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault()
+        openModal()
+      }
+    })
+
+    avatarModal.addEventListener('click', (event) => {
+      const target = event.target as HTMLElement
+      if (!target.closest('.avatar-modal-content')) {
+        closeModal()
+      }
+    })
+
+    avatarModal.addEventListener('keydown', (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        event.preventDefault()
+        closeModal()
+      }
     })
   }
 }
